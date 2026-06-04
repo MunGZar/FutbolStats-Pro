@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: futbol-stats-backend
+    env: node
+    plan: free
+    region: ohio
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: futbol-db
+          property: connectionString
+
+databases:
+  - name: futbol-db
+    plan: free
+    region: ohio
+    postgresMajorVersion: 15
