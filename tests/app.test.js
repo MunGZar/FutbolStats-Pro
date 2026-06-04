@@ -22,7 +22,7 @@ afterAll(async () => {
 describe('GET /api/posiciones', () => {
   it('Debería retornar la lista de equipos ordenada por puntos', async () => {
     
-    // ❌ ERROR 2 (DEVOPS/VARIABLES): La prueba va a fallar en la terminal de GitHub Actions 
+    // ERROR 2 (DEVOPS/VARIABLES): La prueba va a fallar en la terminal de GitHub Actions 
     // porque espera que el entorno sea estrictamente de test ('test'). Si el archivo
     // del workflow no inyecta "NODE_ENV: test", esta validación fallará rompiendo el pipeline.
     if (process.env.NODE_ENV !== 'test') {
