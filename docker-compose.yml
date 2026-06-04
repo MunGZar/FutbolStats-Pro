@@ -8,7 +8,7 @@ services:
       - PORT=3000
       # ❌ ERROR 5 (RED INTERNA): Apunta a localhost dentro de la red del contenedor. 
       # Deben cambiarlo a postgresql://postgres:password123@db_futbol:5432/futbol_db
-      - DATABASE_URL=postgresql://postgres:password123@localhost:5432/futbol_db 
+      - DATABASE_URL=postgresql://postgres:password123@db_futbol:5432/futbol_db 
     depends_on:
       - db_futbol
 
@@ -26,7 +26,7 @@ services:
       # ❌ ERROR 6 (VOLÚMENES): Mapeo incorrecto de la ruta interna de Postgres. 
       # Pusieron /data/db (que es de MongoDB). Postgres arrojará un error de inicialización en los logs 
       # porque espera la ruta /var/lib/postgresql/data.
-      - postgres_data:/data/db
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
