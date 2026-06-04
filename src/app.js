@@ -4,6 +4,11 @@ const pool = require('./config/db');
 const app = express();
 app.use(express.json());
 
+// Endpoint raíz para evitar el error "Cannot GET /"
+app.get('/', (req, res) => {
+  res.json({ message: 'Bienvenido a la API de FutbolStats Pro. Visita /api/posiciones' });
+});
+
 // Endpoint de Salud para Render (Health Check)
 app.get('/api/health', async (req, res) => {
   try {
