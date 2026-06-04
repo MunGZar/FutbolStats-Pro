@@ -39,13 +39,15 @@ const initDB = async () => {
         ('Real Madrid', 6, 2),
         ('Deportivo Pasto', 3, -1);
       `);
-      console.log('✅ Base de datos poblada con equipos iniciales.');
+      console.log('Base de datos poblada con equipos iniciales.');
     }
   } catch (error) {
     console.error('Error al inicializar la base de datos:', error.message);
   }
 };
 
-initDB();
+if (process.env.NODE_ENV !== 'test') {
+  initDB();
+}
 
 module.exports = pool;
